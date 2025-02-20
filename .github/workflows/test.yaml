@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check Site Health
-        uses: grasshopper-labs/site-health-check@v1.0.4
+        uses: grasshopper-labs/site-health-check@v2.0.0
         with:
           url: "https://e2e-drl.grasshopperlabs.link/react/"
           max-attempts: 6
