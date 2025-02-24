@@ -10,6 +10,8 @@ jobs:
   health_check:
     permissions:
       contents: write
+    outputs:
+      new_version: ${{ steps.version_bump.outputs.newTag }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -17,9 +19,14 @@ jobs:
       - name: all env
         run: echo "${{ github.event.head_commit.message }}"
       - name:  'Automated Version Bump'
+        id: version_bump
         uses:  'phips28/gh-action-bump-version@master'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: print env all again
-        run: env
+  use_new_version:
+    runs-on: ubuntu-latest
+    needs: bump_version
+    steps:
+      - name: Use New Version
+        run: echo "The new version is ${{ needs.bump_version.outputs.new_version }}"
