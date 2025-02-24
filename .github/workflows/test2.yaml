@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: all env
-        run: env
+        run: echo "${{ github.event.head_commit.message }}"
       - name: Generate Version
         id: versioning
         uses: sceccotti89/Github-Action-Versioning@v1.0.5
