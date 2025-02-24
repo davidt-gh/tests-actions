@@ -8,6 +8,8 @@ jobs:
   health_check:
     runs-on: ubuntu-latest
     steps:
+      - name: all env
+        run: env
       - name: Generate Version
         id: versioning
         uses: sceccotti89/Github-Action-Versioning@v1.0.5
