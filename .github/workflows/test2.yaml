@@ -18,8 +18,3 @@ jobs:
         uses:  'phips28/gh-action-bump-version@master'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          minor-wording:  'add,Adds,new,feat'
-          major-wording:  'MAJOR,cut-major'
-          patch-wording:  'patch,fixes'
-          rc-wording:     'RELEASE,alpha'
