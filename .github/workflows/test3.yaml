@@ -1,0 +1,29 @@
+name: Argocd
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  update-argocd:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Git
+        run: |
+          git config --global user.email "github-actions@github.com"
+          git config --global user.name "GitHub Actions"
+
+      - name: Clone ArgoCD repository
+        uses: actions/checkout@v4
+        with:
+          repository: grasshopper-labs/argocd
+          ssh-key: ${{ secrets.ARGOCD_PRIVATE_KEY }}
+
+      - name: debug
+        run: |
+          ls
