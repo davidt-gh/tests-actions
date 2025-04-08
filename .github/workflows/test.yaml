@@ -14,6 +14,6 @@ jobs:
         with:
           url: "https://e2e-drl.grasshopperlabs.link/react/"
           max-attempts: 6
-          retry-delay: 10s
+          retry-delay: 60s
           follow-redirect: true
           expect-status: 200
