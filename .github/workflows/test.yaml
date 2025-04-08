@@ -1,0 +1,18 @@
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  health_check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Site Health
+        uses: grasshopper-labs/site-health-check@v2.0.5
+        with:
+          url: "https://e2e-drl.grasshopperlabs.link/react/"
+          max-attempts: 6
+          retry-delay: 10s
+          expect-status: 200
